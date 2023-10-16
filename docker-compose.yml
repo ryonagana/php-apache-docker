@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  web:
+    image: httpd:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./app:/usr/local/apache2/htdocs
+      - ./docker/apache2/00-vhost.conf:/usr/local/apache2/conf/extra/00-vhost.conf
+      - ./docker/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
+  php:
+    container_name: php
+    build:
+      context: ./docker
+    volumes:
+      - ./app:/var/www/html
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+  mysql:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: project_db
+      MARIADB_USER: project
+      MARIADB_PASSWORD: project
