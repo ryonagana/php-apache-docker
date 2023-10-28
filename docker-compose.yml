@@ -11,6 +11,8 @@ services:
       - ./docker/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
   php:
     container_name: php
+    extra_hosts:
+        host.docker.internal: host-gateway
     build:
       context: ./docker
     volumes:

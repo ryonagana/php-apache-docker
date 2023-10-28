@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-ARG WITH_XDEBUG=TRUE
+ARG WITH_XDEBUG="true"
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
