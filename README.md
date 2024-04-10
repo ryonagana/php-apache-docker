@@ -10,7 +10,7 @@ foo@bar:~$ docker-compose build
 foo@bar:~$ docker-compose up 
 ```
 
-run as daemon (backround)
+run as daemon
 ```console
 foo@bar:~$ docker-compose build 
 foo@bar:~$ docker-compose up -d 
