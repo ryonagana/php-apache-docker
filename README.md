@@ -34,3 +34,5 @@ MARIADB_DATABASE: project_db
 MARIADB_USER: project
 MARIADB_PASSWORD: project
 ```
+## XDebug:
+edit  **docker/Dockerfile** change **ARG WITH_XDEBUG** with "false" and build again
