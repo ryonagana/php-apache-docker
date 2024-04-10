@@ -39,5 +39,5 @@ disable Xdebug
 **docker/Dockerfile** change **ARG WITH_XDEBUG** with "false" and build again
 or just type:
 ``` console
-foo@bar:~$ sed -i 's/WITH_XDEBUG=.*/WITH_XDEBUG=\"false\"/g' Dockerfile
+sed -i 's/WITH_XDEBUG=.*/WITH_XDEBUG=\"true\"/g' docker/Dockerfile
 ```
