@@ -35,4 +35,9 @@ MARIADB_USER: project
 MARIADB_PASSWORD: project
 ```
 ## XDebug:
-edit  **docker/Dockerfile** change **ARG WITH_XDEBUG** with "false" and build again
+disable Xdebug
+**docker/Dockerfile** change **ARG WITH_XDEBUG** with "false" and build again
+or just type:
+``` console
+foo@bar:~$ sed -i 's/WITH_XDEBUG=.*/WITH_XDEBUG=\"false\"/g' Dockerfile
+```
