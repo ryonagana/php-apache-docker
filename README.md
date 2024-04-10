@@ -16,6 +16,12 @@ foo@bar:~$ docker-compose build
 foo@bar:~$ docker-compose up -d 
 ```
 
+### Link:
+Open your favorite browser (Internet Explorer not included)
+```
+ http://localhost 
+```
+
 ## Ports in use (default):
 - **Apache**: 80
 - **MySQL (MariaDB)**: 3306
