@@ -4,7 +4,7 @@ services:
       context: ./docker/apache2
       dockerfile: Dockerfile  
     ports:
-      - "80:80"
+      - "8000:80"
     volumes:
       - ./app:/var/www/html
       - ./app:/usr/local/apache2/htdocs
@@ -22,7 +22,7 @@ services:
   mysql:
     image: mariadb:latest
     ports:
-      - "3306:3306"
+      - "33060:3306"
     environment:
       MARIADB_ROOT_PASSWORD: root
       MARIADB_DATABASE: project_db
