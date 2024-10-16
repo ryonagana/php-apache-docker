@@ -21,7 +21,7 @@ foo@bar:~$ docker-compose up -d
 ### Link:
 Open your favorite browser (Internet Explorer not included)
 ```
- http://localhost 
+ http://localhost:8000 
 ```
 
 ## Ports in use (default):
