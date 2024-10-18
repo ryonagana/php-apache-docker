@@ -24,6 +24,15 @@ Open your favorite browser (Internet Explorer not included)
  http://localhost:8000 
 ```
 
+## Change UID and GID 
+``` console
+id -u
+1000
+id -g
+1000
+```
+
+
 ## Ports in use (default):
 - **Apache**: 8000
 - **MySQL (MariaDB)**: 33060

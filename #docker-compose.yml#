@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: ./docker/apache2
+      dockerfile: Dockerfile  
+    ports:
+      - "8000:80"
+    volumes:
+      - ./docker/apache2/00-vhost.conf:/usr/local/apache2/conf/extra/00-vhost.conf
+      - ./docker/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
+  php:
+    container_name: php
+    extra_hosts:
+        host.docker.internal: host-gateway
+    build:
+      context: ./docker
+    volumes:
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+  mysql:
+    image: mariadb:latest
+    ports:
+      - "33060:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: project_db
+      MARIADB_USER: project
+      MARIADB_PASSWORD: project
