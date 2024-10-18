@@ -4,3 +4,4 @@ docker/apache2/conf
 *~
 #docker-compose.yml#
 #docker-compose.yml#
+*.log

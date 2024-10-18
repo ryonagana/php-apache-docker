@@ -29,3 +29,23 @@ services:
       MARIADB_DATABASE: project_db
       MARIADB_USER: project
       MARIADB_PASSWORD: project
+    networks:
+      - local-network
+  phpmyadmin:
+    depends_on:
+     - mysql
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8090:80
+    environment:
+      PMA_HOST: mysql
+      PMA_ARBITRARY: 1
+      MARIADB_ROOT_PASSWORD: root
+    networks:
+      - local-network
+
+networks:
+  local-network:
+
+

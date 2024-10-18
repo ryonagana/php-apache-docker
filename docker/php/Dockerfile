@@ -23,6 +23,8 @@ RUN sed -i 's/group = www-data/group = user/g' /usr/local/etc/php-fpm.d/www.conf
 #enable PHP Errors
 RUN sed -i 's/php_flag\[display\_errors\] = off/php_flag\[display\_errors\] = on/g' /usr/local/etc/php-fpm.d/www.conf
 
+RUN apt-get update && apt-get install -y curl nano wget
+
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -34,4 +36,29 @@ RUN apt-get update && apt-get install -y \
     if [ $WITH_XDEBUG = "true" ] ; then \
         pecl install xdebug; \
     fi ;
+
+
+#install extension intl
+
+RUN apt-get install -y zlib1g-dev libicu-dev g++ \
+&& docker-php-ext-configure intl \
+&& docker-php-ext-install intl
+
+#install extension imagemagick
+
+RUN apt-get install -y \
+    libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+	&& docker-php-ext-enable imagick
+
+
+#install extension zip
+RUN apt-get install -y libzip-dev zlib1g-dev zip \
+    && docker-php-ext-install zip
+
+#install composer
+RUN curl -sS https://getcomposer.org/installer | php \
+        && mv composer.phar /usr/local/bin/ \
+        && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+
 
