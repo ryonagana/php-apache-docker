@@ -1,21 +1,22 @@
+version: "3.8"
 services:
   web:
+    container_name: apache2
     build:
-      context: ./docker/apache2
-      dockerfile: Dockerfile  
+      context: .
+      dockerfile: ./docker/apache2/Dockerfile  
     ports:
       - "8000:80"
-    volumes:
-      - ./app:/var/www/html
-      - ./app:/usr/local/apache2/htdocs
-      - ./docker/apache2/00-vhost.conf:/usr/local/apache2/conf/extra/00-vhost.conf
-      - ./docker/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
   php:
     container_name: php
     extra_hosts:
         host.docker.internal: host-gateway
     build:
-      context: ./docker
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     volumes:
       - ./app:/var/www/html
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
